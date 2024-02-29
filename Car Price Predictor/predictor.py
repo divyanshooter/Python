@@ -41,3 +41,5 @@ car.reset_index(inplace=True,drop=True)
 car=car[car['Price']<6e6].reset_index(drop=True)
 #print(car.shape)
 
+## insert model
+
