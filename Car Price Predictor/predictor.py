@@ -1,3 +1,5 @@
+import sys
+import os
 import numpy as np
 import pandas as pd
 import pickle as pkl
@@ -8,6 +10,7 @@ from sklearn.metrics import r2_score
 from sklearn.compose import make_column_transformer
 from sklearn.pipeline import make_pipeline
 
+print(sys.argv[0])
 
 car=pd.read_csv('./Dataset/quikr_car.csv')
 """print(car.head())
