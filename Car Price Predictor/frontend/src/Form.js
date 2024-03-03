@@ -13,6 +13,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Select ,MenuItem } from '@mui/material';
+const {PythonShell}=require('python-shell');
+
 
 function Copyright(props) {
   return (
@@ -36,11 +38,21 @@ export default function SignIn() {
     const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-      age:data.age
+    console.log(data);
+    const opt={
+      path:"/Users/divyanshuchaturvedi/Documents/Documents/Data Science Practice/Car Price Predictor",
+      args:["Maruti Suzuki Swift","Maruti","2019","100","Petrol"]
+    };
+    PythonShell.run('predictor.py',opt,(err,res)=>{
+       if (err) console.log(err);
+       if(res) console.log(res);
     });
+
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    //   age:data.age
+    // });
   };
 
   return (
