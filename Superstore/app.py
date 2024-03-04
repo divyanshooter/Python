@@ -13,7 +13,7 @@ st.markdown("<style>div.block-container{padding:1rem};</style>",unsafe_allow_htm
 file = st.file_uploader(":file_folder: Upload a file",type=['csv','xlsx','txt','xls'])
 
 
-if file is not None :
+if not file :
     if(file.type=='csv'):
        df= pd.read_csv(file)
     elif (file.type=='.xlsx' or file.type=='application/vnd.ms-excel'):
@@ -61,7 +61,18 @@ if not city :
 else:
    filtered_df=df_date_region_state[df_date_region_state["City"].isin(city)].copy()
 
-st.write(filtered_df)
+# st.write(filtered_df)
 
+category_df=filtered_df.groupby(by="Category",as_index=False)["Sales"].sum()
 
+with col1:
+   st.subheader("Category wise Sales")
+   fig=px.bar(category_df,x="Category",y="Sales",text=['${:,.2f}'.format(x) for x in category_df["Sales"]],template="seaborn")
+   st.plotly_chart(fig,use_container_width=True,height=200)
+
+with col2:
+   st.subheader("Region wise Sales")
+   fig=px.pie(filtered_df,names="Region",values="Sales",hole=0.5)
+   fig.update_traces(text=filtered_df["Region"],textposition="outside")
+   st.plotly_chart(fig,use_container_width=True,height=200)
 
