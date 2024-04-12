@@ -13,14 +13,14 @@ st.markdown("<style>div.block-container{padding:1rem};</style>",unsafe_allow_htm
 file = st.file_uploader(":file_folder: Upload a file",type=['csv','xlsx','txt','xls'])
 
 
-if not file :
+if file:
     if(file.type=='csv'):
        df= pd.read_csv(file)
     elif (file.type=='.xlsx' or file.type=='application/vnd.ms-excel'):
        df=pd.read_excel(file,sheet_name='Orders')
 else :
     df=pd.read_excel("/Users/divyanshuchaturvedi/Documents/Documents/Data Science Practice/Superstore/Superstore datastet.xls",sheet_name='Orders')
-    df=pd.read_excel(file,sheet_name='Orders')
+    #df=pd.read_excel(file,sheet_name='Orders')
 
 #st.write(df)
 
