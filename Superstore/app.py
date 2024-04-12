@@ -110,3 +110,17 @@ st.subheader("Heirarhical Data")
 fig3=px.treemap(filtered_df,path=["Region","Category","Sub-Category"],values="Sales",
                 hover_data=["Sales"],color="Sub-Category")
 st.plotly_chart(fig3,use_container_width=True)
+
+chart1,chart2 = st.columns((2))
+
+with chart1:
+   st.subheader("Segment Wise Sales")
+   fig=px.pie(filtered_df,values="Sales",names="Segment",template="plotly_dark")
+   fig.update_traces(text=filtered_df["Segment"],textposition="inside")
+   st.plotly_chart(fig,use_container_width=True)
+
+with chart2:
+   st.subheader("Category Wise Sales")
+   fig=px.pie(filtered_df,values="Sales",names="Category",template="gridon")
+   fig.update_traces(text=filtered_df["Category"],textposition="inside")
+   st.plotly_chart(fig,use_container_width=True)
