@@ -16,7 +16,46 @@ external_stylesheets= [{
 
 app=dash.Dash(__name__,external_stylesheets=external_stylesheets)
 
-app.layout=html.H1("Hello World!")
 
 if __name__=="__main__":
+    app.layout=html.Div([
+        html.H1("CoVID India View",style={"color":"#fff","text-align":"center","margin-top":"40px"}),
+        html.Div([
+            html.Div([
+                html.Div([
+                    html.Div([
+                        html.H3("Total Cases",className="text-light"),
+                        html.H4("600",className="text-light")
+                    ],className="card-body")
+                ],className="card bg-warning")
+            ],className="col-md-3"),
+            html.Div([
+                html.Div([
+                    html.Div([
+                        html.H3("Active Cases", className="text-light"),
+                        html.H4("600", className="text-light")
+                    ],className="card-body")
+                ],className="card bg-info")
+            ],className="col-md-3"),
+            html.Div([html.Div([
+                    html.Div([
+                        html.H3("Recovered", className="text-light"),
+                        html.H4("600", className="text-light")
+                    ],className="card-body")
+                ],className="card bg-success")],className="col-md-3"),
+            html.Div([html.Div([
+                    html.Div([
+                        html.H3("Deaths", className="text-light"),
+                        html.H4("600", className="text-light")
+                    ],className="card-body")
+                ],className="card bg-danger")],className="col-md-3")
+        ],className="row"),
+        html.Div([
+            html.Div([], className="col-md-6"),
+            html.Div([], className="col-md-6"),
+        ],className="row"),
+        html.Div([
+            html.Div([], className="col-md-12"),
+],className="row")
+    ],className="container")
     app.run_server(debug=True)
