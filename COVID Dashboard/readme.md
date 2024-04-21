@@ -1,4 +1,4 @@
-COVID-19 India Dashboard
+<h1>COVID-19 India Dashboard</h1>
 
 This dashboard provides comprehensive visualizations and statistics regarding COVID-19 cases in India. It is a web-based application built using Python's Dash framework and Plotly for interactive data visualization.
 
