@@ -2,7 +2,7 @@
 
 This dashboard provides comprehensive visualizations and statistics regarding COVID-19 cases in India. It is a web-based application built using Python's Dash framework and Plotly for interactive data visualization.
 
-Features
+<h3>Features</h3>
 
 1. Overview Section:
 Total Cases: Displays the total number of COVID-19 cases reported in India.
@@ -20,13 +20,16 @@ Pie Chart: Presents the distribution of COVID-19 cases across different age grou
 Bar Chart: Illustrates the distribution of COVID-19 cases by state, enabling users to identify regions with the highest number of cases.
 Dynamic Filtering: Users can filter the state-wise analysis based on the status of cases, including hospitalized, recovered, and deceased.
 
-Data Sources
+<h3>Data Sources</h3>
+
 The dashboard utilizes the following data sources:
 
 Individual Patient Data: sourced from the IndividualDetails.csv file, providing detailed information about each COVID-19 patient.
 Daily COVID-19 Statistics: obtained from the covid_19_india.csv file, offering daily updates on confirmed cases.
 Age Group Data: sourced from the AgeGroupDetails.csv file, providing insights into the distribution of cases across different age groups.
-Dependencies
+
+<h3>Dependencies</h3>
+
 The following dependencies are required to run the dashboard:
 
 Python 3.x
@@ -36,7 +39,9 @@ plotly
 dash
 dash-html-components
 dash-core-components
-Installation
+
+<h3>Installation</h3>
+
 To set up the dashboard locally, follow these steps:
 
 1.Clone this repository:
@@ -48,7 +53,7 @@ cd COVID19-India-Dashboard
 3.Install dependencies:
 pip install -r requirements.txt
 
-Usage
+<h3>Usage</h3>
 
 1.Run the Dash application:
 python app.py
@@ -59,6 +64,6 @@ python app.py
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-Acknowledgements
+<h3>Acknowledgements </h3>
 Special thanks to the contributors of the COVID-19 data sources used in this dashboard.
-We appreciate the efforts of the Dash and Plotly development teams for providing powerful tools for data visualization.
+I appreciate the efforts of the Dash and Plotly development teams for providing powerful tools for data visualization.
