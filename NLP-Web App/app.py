@@ -1,9 +1,11 @@
-from flask import Flask,render_template,request,redirect
+from flask import Flask,render_template,request,redirect,session
 from db import Database
+import api
 
 dbo=Database()
 
 app=Flask(__name__)
+app.secret_key = "super secret key" 
 
 @app.route('/')
 def index():
@@ -30,22 +32,39 @@ def perform_login():
     password=request.form.get('password')
     res=dbo.search(email,password)
     if res:
+        session['logged_in']=1
         return redirect("/profile")
     else :
         return render_template('login.html',error="Email Doesnot Exist!!! Please enter correct emailx")
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    print(session['logged_in'])
+    if session['logged_in']==1:
+        return render_template('profile.html')
+    else:
+        return redirect("/")
 
 @app.route('/ner')
 def ner():
-    return render_template('ner.html')
+     if session['logged_in']==1:
+        return render_template('ner.html')
+     else:
+        return redirect("/") 
 
 @app.route('/perform_ner',methods=['post'])
 def perform_ner():
-    ner_input=request.form.get('ner_input')
-    return ner_input
-
+    if session['logged_in']==1:
+        ner_input=request.form.get('ner_input')
+        res=api.ner(ner_input)
+        return render_template('ner.html',response=res)
+    else:
+        return redirect("/")
+    
+@app.route('/logout')
+def perform_logout():
+    session['logged_in']=0
+    return redirect("/")
+    
 
 app.run(debug=True)
