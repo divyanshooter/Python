@@ -4,6 +4,18 @@ class Database:
     def __init__(self): 
         self.df=pd.read_csv("startup_funding.csv")
         self.clean()
+    
+    def investor_analysis(self,investor):
+        investor_df=self.df[self.df['investor'].str.contains(investor)]
+        recent_investment=investor_df.sort_values('date',ascending=False).head()[['date','startupname','vertical','city','round','amount']]
+        biggest_investments=investor_df.groupby('startupname')['amount'].sum().sort_values(ascending=False).head()
+        sector_investments=investor_df.groupby('vertical')['amount'].sum()
+        round_investments=investor_df.groupby('round')['amount'].sum()
+        city_investments=investor_df.groupby('city')['amount'].sum()
+        investor_df['year']=investor_df['date'].dt.year
+        year_investments=investor_df.groupby('year')['amount'].sum()
+        print(year_investments)
+        return recent_investment,biggest_investments,sector_investments,round_investments,city_investments,year_investments
         
     def clean(self):    
         self.df.drop(columns=['Remarks'],inplace=True)
