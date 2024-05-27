@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 class Database:
@@ -5,6 +6,20 @@ class Database:
         self.df=pd.read_csv("startup_funding.csv")
         self.clean()
     
+    def overall_analysis(self):
+        df=self.df
+        total_amount=df['amount'].sum()
+        maximum_amount=df.groupby('startupname')['amount'].sum().sort_values(ascending=False).head(1).values[0]
+        average_amount=df.groupby('startupname')['amount'].sum().mean()
+        startup_count=df['startupname'].nunique()
+        df['month']=df['date'].dt.month_name()
+        df['year']=df['date'].dt.year
+        year_month_df=df.groupby(['year','month']).agg({'startupname':'count','amount':'sum'})
+        year_month_df.reset_index(inplace=True)
+        year_month_df['year_month']=year_month_df['year'].astype('str')+'_'+year_month_df['month'].astype('str')
+        
+        return total_amount,maximum_amount,average_amount,startup_count,year_month_df
+
     def investor_analysis(self,investor):
         investor_df=self.df[self.df['investor'].str.contains(investor)]
         recent_investment=investor_df.sort_values('date',ascending=False).head()[['date','startupname','vertical','city','round','amount']]
@@ -14,7 +29,6 @@ class Database:
         city_investments=investor_df.groupby('city')['amount'].sum()
         investor_df['year']=investor_df['date'].dt.year
         year_investments=investor_df.groupby('year')['amount'].sum()
-        print(year_investments)
         return recent_investment,biggest_investments,sector_investments,round_investments,city_investments,year_investments
         
     def clean(self):    
