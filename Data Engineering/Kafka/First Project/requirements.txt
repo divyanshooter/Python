@@ -1,2 +1,2 @@
 kafka-python
-faker
+faker~=30.6.0
