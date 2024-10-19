@@ -19,8 +19,7 @@ Before running the scripts, ensure you have the following:
 
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
-   cd <repository_directory>
+   git clone https://github.com/divyanshooter/Python/edit/main/Data%20Engineering/Kafka/First%20Project
    ```
 
 2. Install the required dependencies:
