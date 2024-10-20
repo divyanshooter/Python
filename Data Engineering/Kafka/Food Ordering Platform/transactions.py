@@ -10,4 +10,8 @@ if __name__=='__main__':
     while True:
         for msg in consumer:
            consumed_msg=json.loads(msg.value)
-           print(consumed_msg)
+           user_id=consumed_msg['user_id']
+           total_cost=consumed_msg['cost']
+           print("Successful Transaction")
+           data={"user_id":user_id,"total_cost":total_cost}
+           producer.send(ORDERS_CONFIRMED_KAFKA_TOPIC,data)

@@ -23,7 +23,7 @@ restaurant_menu = [
 
 
 order=[]
-order.extend(random.sample(restaurant_menu, 5))
+order.extend(random.sample(restaurant_menu, random.randint(1,len(restaurant_menu))))
 
 def get_orders():
     return {
@@ -31,5 +31,6 @@ def get_orders():
         "user_id":faker.email(),
         "name":faker.name(),
         "items":order,
+        "cost":len(order)*20,
         "created_at":faker.date(),
     }
