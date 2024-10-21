@@ -22,10 +22,11 @@ restaurant_menu = [
     "Tom Yum Soup"]
 
 
-order=[]
-order.extend(random.sample(restaurant_menu, random.randint(1,len(restaurant_menu))))
+
 
 def get_orders():
+    order = []
+    order.extend(random.sample(restaurant_menu, random.randint(1, len(restaurant_menu))))
     return {
         "order_id":random.randint(1,20000),
         "user_id":faker.email(),
