@@ -106,7 +106,7 @@ The dataset (`data.csv`) is expected to be in the root directory or `./data.csv`
 ## 📂 File Structure
 
 ```
-sales-profit-analysis/
+E-Commerce/
 │
 ├── data.csv                # Sales dataset
 ├── E-Commerce.py           # Main analysis script
