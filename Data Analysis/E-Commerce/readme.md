@@ -31,8 +31,8 @@ The dataset (`data.csv`) is expected to be in the root directory or `./data.csv`
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/sales-profit-analysis.git
-   cd sales-profit-analysis
+   git clone https://github.com/divyanshooter/python.git
+   cd Data Analysis/E-Commerce
    ```
 
 2. **Install dependencies:**
