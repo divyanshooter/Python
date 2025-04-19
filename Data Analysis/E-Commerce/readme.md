@@ -109,7 +109,7 @@ The dataset (`data.csv`) is expected to be in the root directory or `./data.csv`
 sales-profit-analysis/
 │
 ├── data.csv                # Sales dataset
-├── E-Commerce.py             # Main analysis script
+├── E-Commerce.py           # Main analysis script
 ├── README.md               # You're here
 ```
 
