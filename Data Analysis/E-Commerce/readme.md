@@ -1,7 +1,3 @@
-Here's a clean and professional `README.md` file for your code, assuming the project is focused on **Sales and Profit Analysis using Plotly and Pandas**:
-
----
-
 # 📊 Sales & Profit Analysis Dashboard
 
 This project performs an interactive analysis of sales and profit data using **Pandas** for data manipulation and **Plotly** for data visualization. The dataset is preprocessed and visualized to explore trends across time, categories, sub-categories, and segments.
