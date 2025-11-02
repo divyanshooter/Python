@@ -1,49 +1,59 @@
-from langchain_openai import ChatOpenAI
-from langchain_core.prompts import PromptTemplate,load_prompt
-from dotenv import load_dotenv
-import streamlit as st 
-load_dotenv()
-
-model=ChatOpenAI(model='gpt-4')
-st.header("Research Tool")
-
-
-paper_input = st.selectbox( "Select Research Paper Name", ["Attention Is All You Need", "BERT: Pre-training of Deep Bidirectional Transformers", "GPT-3: Language Models are Few-Shot Learners", "Diffusion Models Beat GANs on Image Synthesis"] )
-
-style_input = st.selectbox( "Select Explanation Style", ["Beginner-Friendly", "Technical", "Code-Oriented", "Mathematical"] ) 
-
-length_input = st.selectbox( "Select Explanation Length", ["Short (1-2 paragraphs)", "Medium (3-5 paragraphs)", "Long (detailed explanation)"] )
-
-# template = PromptTemplate(
-#     template="""
-# Please summarize the research paper titled "{paper_input}" with the following specifications:
-# Explanation Style: {style_input}  
-# Explanation Length: {length_input}  
-# 1. Mathematical Details:  
-#    - Include relevant mathematical equations if present in the paper.  
-#    - Explain the mathematical concepts using simple, intuitive code snippets where applicable.  
-# 2. Analogies:  
-#    - Use relatable analogies to simplify complex ideas.  
-# If certain information is not available in the paper, respond with: "Insufficient information available" instead of guessing.  
-# Ensure the summary is clear, accurate, and aligned with the provided style and length.
-# """,input_variables=['paper_input','style_input','length_input' ])
-
-template=load_prompt('GenAI/Agentic AI/Langchain/Learning/Components/Prompts/template.json')
-
-# prompt=template.invoke({
-#     'paper_input':paper_input,
-#     'style_input':style_input,
-#     'length_input':length_input
-# })
-
-# if st.button("Summarise"):
-#     result=model.invoke(prompt)
-#     st.write(result.content)
-
-if st.button("Summarise"):
-    chain= template | model
-    result=chain.invoke({ 
-        'paper_input':paper_input,
-        'style_input':style_input,
-        'length_input':length_input })
-    st.write(result.content)
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "f4e9fb02",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "from langchain_openai import ChatOpenAI\n",
+    "from dotenv import load_dotenv\n",
+    "import streamlit as st\n",
+    "load_dotenv()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "950b14e5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "st.header('Research Tool')"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.18"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
