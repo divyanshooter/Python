@@ -16,3 +16,4 @@ faiss-cpu
 langchain_chroma
 scikit-learn
 streamlit
+pydantic
