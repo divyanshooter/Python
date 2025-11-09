@@ -17,3 +17,5 @@ langchain_chroma
 scikit-learn
 streamlit
 pydantic
+duckduckgo-search
+langchain-experimental
