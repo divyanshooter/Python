@@ -19,3 +19,4 @@ streamlit
 pydantic
 duckduckgo-search
 langchain-experimental
+ddgs
